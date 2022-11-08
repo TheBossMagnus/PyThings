@@ -1,9 +1,8 @@
-from curses.textpad import Textbox
 import tkinter as tk
-from pick import pick
 import time
 import datetime
 import threading
+from pick import pick
 import playsound
 import keyboard
 import psutil
@@ -12,11 +11,11 @@ import psutil
 
 
 def widgetclock():
-    def stop():
+    def kill():
         for proc in psutil.process_iter():
             if proc.name() == "python.exe":
                 proc.kill()
-    keyboard.add_hotkey("ctrl+shift+z", stop)
+    keyboard.add_hotkey("ctrl+shift+z", kill)
     def update_clock():
         # get current time as text
         current_time = datetime.datetime.now().strftime("%H:%M:%S")
@@ -50,11 +49,11 @@ def widgetclock():
 
  # thanks to https://youtu.be/kfjdVgKE6xY for threading
 class Timer:
-    def stop():
+    def kill():
         for proc in psutil.process_iter():
             if proc.name() == "python.exe":
                 proc.kill()
-    keyboard.add_hotkey("ctrl+shift+z", stop)
+    keyboard.add_hotkey("ctrl+shift+z", kill)
     def __init__(self):
         self.win = tk.Tk()
         self.win.title("Timer")
@@ -122,11 +121,11 @@ class Timer:
 
 
 def fullscreencloclk():
-    def stop():
+    def kill():
         for proc in psutil.process_iter():
             if proc.name() == "python.exe":
                 proc.kill()
-    keyboard.add_hotkey("ctrl+shift+z", stop)
+    keyboard.add_hotkey("ctrl+shift+z", kill)
     def stop():
         win.destroy()
         exit()
