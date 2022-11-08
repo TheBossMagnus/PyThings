@@ -1,7 +1,7 @@
-import ntplib
 from time import ctime
 import calendar
 import datetime
+import ntplib
 
 
 
