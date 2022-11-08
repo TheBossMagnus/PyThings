@@ -32,10 +32,9 @@ def widgetclock():
     def center_window(w=65, h=20):
         # get screen width and height
         hs = win.winfo_screenheight()
-        # calculate position x, y
-        x = 0
-        y = (hs/1.085)
-        win.geometry(f'%dx%d+%d+%d'(w, h, x, y))
+        # calculate position y
+        y = '%.0f'%(hs/1.085)
+        win.geometry(f"65x20+0+{y}")
 
     win = tk.Tk()
     center_window(65, 20)
