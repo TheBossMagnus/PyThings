@@ -2,6 +2,7 @@ import tkinter as tk
 import time
 import datetime
 import threading
+import sys
 from pick import pick
 import playsound
 import keyboard
@@ -179,7 +180,7 @@ def menu():
         Currenttime()
         menu()
     if option == 'exit':
-        exit()
+        sys.exit()
 
 
 menu()
