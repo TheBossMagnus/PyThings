@@ -35,7 +35,7 @@ def widgetclock():
         # calculate position x, y
         x = 0
         y = (hs/1.085)
-        win.geometry('%dx%d+%d+%d' % (w, h, x, y))
+        win.geometry(f'%dx%d+%d+%d'(w, h, x, y))
 
     win = tk.Tk()
     center_window(65, 20)
