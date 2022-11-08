@@ -138,19 +138,8 @@ def fullscreencloclk():
         # run itself again after 1000 ms
         win.after(1000, update_clock)
 
-    # https://www.daniweb.com/programming/software-development/threads/66181/center-a-tkinter-window
-    def center_window(w=65, h=20):
-        # get screen width and height
-        hs = win.winfo_screenheight()
-        # calculate position x, y
-        x = 0
-        y = (hs/1.085)
-        win.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
     win = tk.Tk()
-    # center_window(65, 20)
-    # win.overrideredirect(True)
-    # win.wm_attributes('-topmost', 'True')
     win.wm_attributes("-fullscreen", True)
     lab = tk.Label(win, text="00:00:00")
     lab.pack()
@@ -159,7 +148,6 @@ def fullscreencloclk():
     win.mainloop()
 
 def Currenttime():
-    #currentDateAndTime = datetime.now()
     print("The current date and time is")
 
 def menu():
