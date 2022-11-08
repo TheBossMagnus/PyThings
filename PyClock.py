@@ -50,11 +50,6 @@ def widgetclock():
 
  # thanks to https://youtu.be/kfjdVgKE6xY for threading
 class Timer:
-    def kill():
-        for proc in psutil.process_iter():
-            if proc.name() == "python.exe":
-                proc.kill()
-    keyboard.add_hotkey("ctrl+shift+z", kill)
     def __init__(self):
         self.win = tk.Tk()
         self.win.title("Timer")
