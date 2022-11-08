@@ -126,10 +126,6 @@ def fullscreencloclk():
             if proc.name() == "python.exe":
                 proc.kill()
     keyboard.add_hotkey("ctrl+shift+z", kill)
-    def stop():
-        win.destroy()
-        exit()
-    keyboard.add_hotkey("ctrl+shift+z", stop)
     def update_clock():
         # get current time as text
         current_time = datetime.datetime.now().strftime("%H:%M:%S")
@@ -183,7 +179,7 @@ def menu():
         Currenttime()
         menu()
     if option == 'exit':
-        exit()
+        sys.exit()
 
 
 menu()
