@@ -179,7 +179,7 @@ def menu():
         Currenttime()
         menu()
     if option == 'exit':
-        sys.exit()
+        exit()
 
 
 menu()
