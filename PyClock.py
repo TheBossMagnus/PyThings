@@ -29,7 +29,7 @@ def widgetclock():
         win.after(1000, update_clock)
 
     # https://www.daniweb.com/programming/software-development/threads/66181/center-a-tkinter-window
-    def center_window(w=65, h=20):
+    def center_window():
         # get screen width and height
         hs = win.winfo_screenheight()
         # calculate position y
