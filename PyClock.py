@@ -33,11 +33,11 @@ def widgetclock():
         # get screen width and height
         hs = win.winfo_screenheight()
         # calculate position y
-        y = '%.0f'%(hs/1.085)
+        y = round(hs/1.085) #because win.geometry don't love decimals
         win.geometry(f"65x20+0+{y}")
 
     win = tk.Tk()
-    center_window(65, 20)
+    center_window()
     win.overrideredirect(True)
     win.wm_attributes('-topmost', 'True')
     lab = tk.Label(win, text="00:00:00")
