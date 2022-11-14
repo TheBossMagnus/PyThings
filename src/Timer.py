@@ -1,12 +1,8 @@
  # thanks to https://youtu.be/kfjdVgKE6xY for threading
 import tkinter as tk
-import keyboard
-import datetime
 import time
 import threading
-import sys
 import playsound
-import psutil
 
 
 class timer():
