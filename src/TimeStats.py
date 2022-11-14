@@ -3,14 +3,13 @@ import calendar
 import datetime
 import ntplib
 
-
+#need complete refactory using datetime object
 def timestats():
     response = ntplib.NTPClient().request('pool.ntp.org')
     output= response.tx_time
     converted=ctime(output)
 
     weekday, month, day, time, year =converted.split()
-    hours, minutes, seconds = time.split(':')
 
     if weekday == 'Mon':
         weekday = 'Monday'
