@@ -13,7 +13,7 @@ with open(file, 'rb') as file:
     sha256 = hashlib.sha256(data).hexdigest()
     sha1 = hashlib.sha1(data).hexdigest()
 
-if Expectedhash == md5 or Expectedhash == sha256 or Expectedhash == sha1:
+if Expectedhash in (md5, sha256, sha1):
     print("The hash corresponds to the file")
 else:
     print("The hash is wrong or the file is corrupted")
