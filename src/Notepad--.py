@@ -79,7 +79,7 @@ class TextEditor:
     # checking if filename not none
     if self.filename:
       # opening file in readmode
-      infile = open(self.filename,"r")
+      infile = open(self.filename,"r",encoding="utf-8")
       # Clearing text area
       self.txtarea.delete("1.0",END)
       # Inserting data Line by line into text area
@@ -101,7 +101,7 @@ class TextEditor:
       # Reading the data from text area
       data = self.txtarea.get("1.0",END)
       # opening File in write mode
-      outfile = open(self.filename,"w")
+      outfile = open(self.filename,"w",encoding="utf-8")
       # Writing Data into file
       outfile.write(data)
       # Closing File
@@ -114,7 +114,7 @@ class TextEditor:
         self.saveasfile()
 
   # Defining Save As File Funtion
-  def saveasfile(self):
+  def saveasfile(self,*args):
     # Exception handling
     # Asking for file name and type to save
     untitledfile = filedialog.asksaveasfilename(title = "Save file As",defaultextension=".txt",initialfile = "Untitled.txt",filetypes = (("All Files","*.*"),("Text Files","*.txt"),("Python Files","*.py")))
