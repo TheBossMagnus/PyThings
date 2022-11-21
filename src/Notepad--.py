@@ -61,7 +61,7 @@ class TextEditor:
       self.title.set("Untitled")
 
   # Defining New file Function
-  def newfile(self):
+  def newfile(self,*args):
     # Clearing the Text Area
     self.txtarea.delete("1.0",END)
     # Updating filename as None
@@ -72,7 +72,7 @@ class TextEditor:
     self.status.set("New File Created")
 
   # Defining Open File Funtion
-  def openfile(self):
+  def openfile(self,*args):
     # Exception handling
     # Asking for file to open
     self.filename = filedialog.askopenfilename(title = "Select file",filetypes = (("All Files","*.*"),("Text Files","*.txt"),("Python Files","*.py")))
@@ -94,7 +94,7 @@ class TextEditor:
 
 
   # Defining Save File Funtion
-  def savefile(self):
+  def savefile(self,*arg):
     # Exception handling
     # checking if filename not none
     if self.filename:
