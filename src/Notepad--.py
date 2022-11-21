@@ -79,18 +79,18 @@ class TextEditor:
     # checking if filename not none
     if self.filename:
       # opening file in readmode
-      infile = open(self.filename,"r",encoding="utf-8")
+      with open(self.filename,"r",encoding="utf-8") as infile:
       # Clearing text area
-      self.txtarea.delete("1.0",END)
-      # Inserting data Line by line into text area
-      for line in infile:
-        self.txtarea.insert(END,line)
-      # Closing the file  
-      infile.close()
-      # Calling Set title
-      self.settitle()
-      # Updating Status
-      self.status.set("Opened Successfully")
+        self.txtarea.delete("1.0",END)
+        # Inserting data Line by line into text area
+        for line in infile:
+          self.txtarea.insert(END,line)
+        # Closing the file  
+        infile.close()
+        # Calling Set title
+        self.settitle()
+        # Updating Status
+        self.status.set("Opened Successfully")
 
 
   # Defining Save File Funtion
@@ -101,15 +101,15 @@ class TextEditor:
       # Reading the data from text area
       data = self.txtarea.get("1.0",END)
       # opening File in write mode
-      outfile = open(self.filename,"w",encoding="utf-8")
-      # Writing Data into file
-      outfile.write(data)
-      # Closing File
-      outfile.close()
-      # Calling Set title
-      self.settitle()
-      # Updating Status
-      self.status.set("Saved Successfully")
+      with open(self.filename,"w",encoding="utf-8") as outfile:
+        # Writing Data into file
+        outfile.write(data)
+        # Closing File
+        outfile.close()
+        # Calling Set title
+        self.settitle()
+        # Updating Status
+        self.status.set("Saved Successfully")
     else:
         self.saveasfile()
 
@@ -121,17 +121,17 @@ class TextEditor:
     # Reading the data from text area
     data = self.txtarea.get("1.0",END)
     # opening File in write mode
-    outfile = open(untitledfile,"w")
-    # Writing Data into file
-    outfile.write(data)
-    # Closing File
-    outfile.close()
-    # Updating filename as Untitled
-    self.filename = untitledfile
-    # Calling Set title
-    self.settitle()
-    # Updating Status
-    self.status.set("Saved Successfully")
+    with open(untitledfile,"w", encoding="utf-8") as outfile:
+      # Writing Data into file
+      outfile.write(data)
+      # Closing File
+      outfile.close()
+      # Updating filename as Untitled
+      self.filename = untitledfile
+      # Calling Set title
+      self.settitle()
+      # Updating Status
+      self.status.set("Saved Successfully")
 
   # Defining Exit Funtion
   def exit(self):
