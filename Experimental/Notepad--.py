@@ -75,7 +75,7 @@ class TextEditor:
         # Closing File
         outfile.close()
     else:
-        self.saveasfile()
+        self.saveasfile(arg)
 
   # Defining Save As File Funtion
   def saveasfile(self, arg):
