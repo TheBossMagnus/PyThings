@@ -1,7 +1,8 @@
 # Importing Required libraries & Modules
-from tkinter import *
+from tkinter import Label, Scrollbar, Text, END, RIGHT, VERTICAL, Y, BOTH, GROOVE, BOTTOM, Tk
 from tkinter import messagebox
 from tkinter import filedialog
+import sys
 
 
 # Defining TextEditor Class
@@ -36,7 +37,7 @@ class TextEditor:
 
 
   # Defining New file Function
-  def newfile(self,*args):
+  def newfile(self, arg):
     # Clearing the Text Area
     self.txtarea.delete("1.0",END)
     # Updating filename as None
@@ -44,7 +45,7 @@ class TextEditor:
 
 
   # Defining Open File Funtion
-  def openfile(self,*args):
+  def openfile(self, arg):
     # Asking for file to open
     self.filename = filedialog.askopenfilename(title = "Select file",filetypes = (("All Files","*.*"),("Text Files","*.txt"),("Python Files","*.py")))
     # checking if filename not none
@@ -61,7 +62,7 @@ class TextEditor:
 
 
   # Defining Save File Funtion
-  def savefile(self,*arg):
+  def savefile(self, arg):
     # Exception handling
     # checking if filename not none
     if self.filename:
@@ -77,7 +78,7 @@ class TextEditor:
         self.saveasfile()
 
   # Defining Save As File Funtion
-  def saveasfile(self,*args):
+  def saveasfile(self, arg):
     # Exception handling
     # Asking for file name and type to save
     untitledfile = filedialog.asksaveasfilename(title = "Save file As",defaultextension=".txt",initialfile = "Untitled.txt",filetypes = (("All Files","*.*"),("Text Files","*.txt"),("Python Files","*.py")))
@@ -94,10 +95,10 @@ class TextEditor:
 
 
   # Defining Exit Funtion
-  def exit(self,*arg):
+  def exit(self, arg):
     op = messagebox.askyesno("WARNING","Your Unsaved Data May be Lost!!")
     if op>0:
-      exit()
+      sys.exit()
     else:
       return
 

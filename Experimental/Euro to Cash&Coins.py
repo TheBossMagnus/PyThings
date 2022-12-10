@@ -1,10 +1,14 @@
 import math
 import tabulate
 
+
+
+
 def GetInput():
     global raw_input
-    global raw_cents
     raw_input = input("Enter the ammount:")
+    global raw_cents
+    raw_cents = 0
     try:
         if raw_input.find(",")!=-1:                  #input contains ","
             raw_cents=int(raw_input.replace(",",""))  #remove ","
@@ -12,10 +16,9 @@ def GetInput():
             raw_cents=int(raw_input.replace(".",""))  #remove "."
         else:                                       #input is in Euro only format(5=500cents)
             raw_cents=int(raw_input)*100              #add "00" to the end
-    except:
+    except ValueError:
         print("Invalid input")                      #if input is invalid print error and reask for input
         GetInput()
-
 GetInput()
 
 #[Value, Remaing ammount/value, rest of ammount/value]
