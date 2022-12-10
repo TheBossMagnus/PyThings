@@ -62,8 +62,12 @@ class timer():
         if not self.stop_loop:
             self.time_label.config(text="00:00:00")
             self.win.wm_attributes('-topmost', 'True')
-            playsound.playsound("C:/Windows/Media/Alarm01.wav")  # use / instead of \ https://stackoverflow.com/questions/37400974/error-unicode-error-unicodeescape-codec-cant-decode-bytes-in-position-2-3
+            playsound.playsound('C:/Windows/Media/Alarm01.wav')  # use / instead of \ and ' instead of "
 
     def stop(self):
         self.stop_loop = True
         self.time_label.config(text="00:00:00")
+        self.win.destroy()
+        timer()
+
+timer()

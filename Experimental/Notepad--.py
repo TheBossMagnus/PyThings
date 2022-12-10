@@ -3,37 +3,21 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
 
+
 # Defining TextEditor Class
 class TextEditor:
 
-  # Defining Constructor
-  def __init__(self,root):
-    # Assigning root
-    self.root = root
-    # Title of the window
-    self.root.title("Notepad--")
-    # Window Geometry
-    self.root.geometry("1200x700+200+150")
-    # Initializing filename
-    self.filename = None
-    # Declaring Title variable
-    self.title = StringVar()
-    # Declaring Status variable
-    self.status = StringVar()
 
-    # Creating Titlebar
-    self.titlebar = Label(self.root,textvariable=self.title,font=("times new roman",15,"bold"),bd=2,relief=GROOVE)
-    # Packing Titlebar to root window
-    self.titlebar.pack(side=TOP,fill=BOTH)
-    # Calling Settitle Function
-    self.settitle()
+  def __init__(self,root):
+    self.root = root
+    self.root.title("Notepad--")
+    self.root.geometry("1200x700+200+150")
+    self.filename = None
 
     # Creating Statusbar
-    self.statusbar = Label(self.root,textvariable=self.status,font=("times new roman",15,"bold"),bd=2,relief=GROOVE)
+    self.statusbar = Label(self.root, text="Ctrl+N : New File | Ctrl+O : Open File | Ctrl+S : Save File | Ctrl+A : Save As File | Ctrl+E : Exit | Ctrl+X : Cut | Ctrl+C : Copy | Ctrl+V : Paste", font=("times new roman",15,"bold"),bd=2,relief=GROOVE)
     # Packing status bar to root window
     self.statusbar.pack(side=BOTTOM,fill=BOTH)
-    # Initializing Status
-    self.status.set("Welcome To Text Editor")
 
 
     # Creating Scrollbar
@@ -50,15 +34,6 @@ class TextEditor:
     # Calling shortcuts funtion
     self.shortcuts()
 
-  # Defining settitle function
-  def settitle(self):
-    # Checking if Filename is not None
-    if self.filename:
-      # Updating Title as filename
-      self.title.set(self.filename)
-    else:
-      # Updating Title as Untitled
-      self.title.set("Untitled")
 
   # Defining New file Function
   def newfile(self,*args):
@@ -66,14 +41,10 @@ class TextEditor:
     self.txtarea.delete("1.0",END)
     # Updating filename as None
     self.filename = None
-    # Calling settitle funtion
-    self.settitle()
-    # updating status
-    self.status.set("New File Created")
+
 
   # Defining Open File Funtion
   def openfile(self,*args):
-    # Exception handling
     # Asking for file to open
     self.filename = filedialog.askopenfilename(title = "Select file",filetypes = (("All Files","*.*"),("Text Files","*.txt"),("Python Files","*.py")))
     # checking if filename not none
@@ -87,10 +58,6 @@ class TextEditor:
           self.txtarea.insert(END,line)
         # Closing the file  
         infile.close()
-        # Calling Set title
-        self.settitle()
-        # Updating Status
-        self.status.set("Opened Successfully")
 
 
   # Defining Save File Funtion
@@ -106,10 +73,6 @@ class TextEditor:
         outfile.write(data)
         # Closing File
         outfile.close()
-        # Calling Set title
-        self.settitle()
-        # Updating Status
-        self.status.set("Saved Successfully")
     else:
         self.saveasfile()
 
@@ -128,16 +91,13 @@ class TextEditor:
       outfile.close()
       # Updating filename as Untitled
       self.filename = untitledfile
-      # Calling Set title
-      self.settitle()
-      # Updating Status
-      self.status.set("Saved Successfully")
+
 
   # Defining Exit Funtion
-  def exit(self):
+  def exit(self,*arg):
     op = messagebox.askyesno("WARNING","Your Unsaved Data May be Lost!!")
     if op>0:
-      self.root.destroy()
+      exit()
     else:
       return
 
