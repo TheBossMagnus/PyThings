@@ -37,7 +37,7 @@ class TextEditor:
 
 
   # Defining New file Function
-  def newfile(self, outfile):
+  def newfile(self,*args):
     # Clearing the Text Area
     self.txtarea.delete("1.0",END)
     # Updating filename as None
@@ -45,7 +45,7 @@ class TextEditor:
 
 
   # Defining Open File Funtion
-  def openfile(self, outfile):
+  def openfile(self,*args):
     # Asking for file to open
     self.filename = filedialog.askopenfilename(title = "Select file",filetypes = (("All Files","*.*"),("Text Files","*.txt"),("Python Files","*.py")))
     # checking if filename not none
@@ -57,12 +57,12 @@ class TextEditor:
         # Inserting data Line by line into text area
         for line in infile:
           self.txtarea.insert(END,line)
-        # Closing the file  
+        # Closing the file
         infile.close()
 
 
   # Defining Save File Funtion
-  def savefile(self, outfile):
+  def savefile(self,*arg):
     # Exception handling
     # checking if filename not none
     if self.filename:
@@ -78,7 +78,7 @@ class TextEditor:
         self.saveasfile()
 
   # Defining Save As File Funtion
-  def saveasfile(self, outfile):
+  def saveasfile(self,*args):
     # Exception handling
     # Asking for file name and type to save
     untitledfile = filedialog.asksaveasfilename(title = "Save file As",defaultextension=".txt",initialfile = "Untitled.txt",filetypes = (("All Files","*.*"),("Text Files","*.txt"),("Python Files","*.py")))
@@ -95,7 +95,7 @@ class TextEditor:
 
 
   # Defining Exit Funtion
-  def exit(self, op):
+  def exit(self,*arg):
     op = messagebox.askyesno("WARNING","Your Unsaved Data May be Lost!!")
     if op>0:
       sys.exit()
