@@ -1,9 +1,6 @@
 import math
 import tabulate
 
-
-
-
 def GetInput():
     global raw_input
     raw_input = input("Enter the ammount:")
@@ -21,7 +18,7 @@ def GetInput():
         GetInput()
 GetInput()
 
-#[Value, Remaing ammount/value, rest of ammount/value]
+#[Value, ammount/value, remainder of ammount/value]
 headers = ["Value", "Quantity", "Missing"]
 five_hundred = ["500€", math.trunc(raw_cents/50000), raw_cents%50000]
 two_hundred = ["200€", math.trunc(five_hundred[2]/20000), five_hundred[2]%20000]
@@ -40,7 +37,11 @@ two_cents = ["2c", math.trunc(five_cents[2]/2), five_cents[2]%2]
 one_cents = ["1c", math.trunc(two_cents[2]/1), two_cents[2]%1]
 
 
-table = [headers, five_hundred, two_hundred, one_hundred, fifty, twenty, ten, five, two, one, fifty_cents, twenty_cents, ten_cents, five_cents, two_cents, one_cents] #,remainder]
+table = [headers, five_hundred, two_hundred, one_hundred, fifty, twenty, ten, five, two, one, fifty_cents, twenty_cents, ten_cents, five_cents, two_cents, one_cents] 
+
+# remove a sublist if the quantity is 0
+table = [sublist for sublist in table if sublist[1] != 0]
 
 print(tabulate.tabulate(table, tablefmt='fancy_grid', headers='firstrow'))
 print(f"\n{raw_input}€ is equal to {raw_cents} cents")
+
