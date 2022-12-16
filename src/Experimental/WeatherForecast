@@ -1,55 +1,28 @@
 import requests
+location = input("Enter the city name: ")
 
-# Set the API key
-API_KEY = "c2c9eba87cb102eaba0a32b117cc7a68"
+def GetWeather(location):
+    # Set the URL for the API endpoint
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={location}&APPID=c2c9eba87cb102eaba0a32b117cc7a68"
 
-# Set the location for which you want to get the weather
-LOCATION = "New York"
+    # Make the request to the API and convert the response to JSON
+    response = requests.get(url)
+    response = response.json()
 
-# Set the URL for the API endpoint
-url = f"http://api.openweathermap.org/data/2.5/weather?q={LOCATION}&APPID={API_KEY}"
+    if response["cod"] != "404":
 
-# Make the request to the API
-response = requests.get(url)
+        #extract data from the response
+        temperature = response["main"]["temp"]
+        pressure = response["main"]["pressure"]
+        humidity = response["main"]["humidity"]
+        weather_description = response["weather"][0]["description"]
 
-x = response.json()
+        #print the data
+        print(f"temperature:{temperature}")
+        print(f"pressure:{pressure}")
+        print(f"humidity:{humidity}")
+        print(f"weather:{weather_description}")
 
-
-if x["cod"] != "404":
-
-    y = x["main"]
- 
-    # store the value corresponding
-    # to the "temp" key of y
-    current_temperature = y["temp"]
- 
-    # store the value corresponding
-    # to the "pressure" key of y
-    current_pressure = y["pressure"]
- 
-    # store the value corresponding
-    # to the "humidity" key of y
-    current_humidity = y["humidity"]
- 
-    # store the value of "weather"
-    # key in variable z
-    z = x["weather"]
- 
-    # store the value corresponding
-    # to the "description" key at
-    # the 0th index of z
-    weather_description = z[0]["description"]
- 
-    # print following values
-    print(" Temperature (in kelvin unit) = " +
-                    str(current_temperature) +
-          "\n atmospheric pressure (in hPa unit) = " +
-                    str(current_pressure) +
-          "\n humidity (in percentage) = " +
-                    str(current_humidity) +
-          "\n description = " +
-                    str(weather_description))
-
-else:
-    print(" City Not Found ")
-
+    else:
+        print(" City Not Found ")
+GetWeather(location)
